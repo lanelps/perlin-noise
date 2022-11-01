@@ -18,7 +18,7 @@ function generateGrid(nodes) {
     let row = [];
     for (let y = 0; y < nodes; y++) {
       const value = noise.perlin2(x / 2, y / 2);
-      row.push(value);
+      row.push(value + 0.5);
     }
     grid.push(row);
   }
@@ -49,7 +49,7 @@ function drawGrid(grid) {
       const pixel = document.querySelector(
         `[data-row="${gridRowIndex}"][data-column="${gridColumnIndex}"]`
       );
-      const color = gridItem * 256;
+      const color = gridItem * 255;
       pixel.style.cssText = `
         background-color: rgba(${color},${color},${color});
       `;
